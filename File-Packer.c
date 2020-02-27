@@ -16,21 +16,24 @@ int main(int argc, char *argv[]) {
         if ( access( argv[1], F_OK ) != -1 ) {
             printf("%s will be used to load files and directories \
 for Packing and Unpacking.\n", argv[1]);
-        } else { 
+        } else {
             printf("%s is not a file.\n", argv[1]);
             exit(EXIT_FAILURE);
         }
 
-        // Enables the options provided to the program.
+        // will contain the options provided through arguments
+        // options start from 2nd argument
         enum Options enable[argc-2];
         char buffer[10];
 
+        // Convert arguments to string buffer
         for (char i = 2; i < argc; i++)
         {
             strcpy(buffer, argv[i]);
             enable[i-2] = buffer[1];
         }
 
+        // Enable the options provided to the program.
         for (char i = 2; i < argc; i++)
         {
             switch (enable[i-2])
@@ -65,7 +68,7 @@ for Packing and Unpacking.\n", argv[1]);
             case 'e':
                 option[e] = 1;
                 break;
-            
+
             default:
                 printf("Wrong Option %s", argv[i]);
                 break;
@@ -73,16 +76,18 @@ for Packing and Unpacking.\n", argv[1]);
         }
         printf("\n");
     }
+
     // Print this if arguments weren't provided.
     else
     {
         printf("You didn't provide any arguments.\n");
     }
-    
+
+    // To be removed after the implementation of pack.c and unpack.c
     for (char i = 0; i < 10; i++)
     {
         printf("%d ", option[i]);
     } printf("\n");
-    
+
     return 0;
 }
