@@ -5,19 +5,21 @@
 #include "pack.h"
 #include "unpack.h"
 
+#define VERSION "0.0.0.1"
+
 // Options available globally
-char option[10];
+char p_option[10], s_option[4];
 
 int main(int argc, char *argv[]) {
+    printf("file-pack version : %s\n", VERSION);
 
     // Checks if arguments are provided or not.
     if (argc > 1) {
         // Checks if file exists or not.
         if ( access( argv[1], F_OK ) != -1 ) {
-            printf("%s will be used to load files and directories \
-for Packing and Unpacking.\n", argv[1]);
+            printf("\nusing %s\n", argv[1]);
         } else {
-            printf("%s is not a file.\n", argv[1]);
+            printf("\n%s does not exist or not readable\n", argv[1]);
             exit(EXIT_FAILURE);
         }
 
@@ -39,34 +41,34 @@ for Packing and Unpacking.\n", argv[1]);
             switch (enable[i-2])
             {
             case 'P':
-                option[P] = 1;
+                p_option[P] = 1;
                 break;
             case 'o':
-                option[o] = 1;
+                p_option[o] = 1;
                 break;
             case 'r':
-                option[r] = 1;
+                p_option[r] = 1;
                 break;
             case 't':
-                option[t] = 1;
+                p_option[t] = 1;
                 break;
             case 'U':
-                option[U] = 1;
+                p_option[U] = 1;
                 break;
             case 'g':
-                option[g] = 1;
+                p_option[g] = 1;
                 break;
             case 'u':
-                option[u] = 1;
+                p_option[u] = 1;
                 break;
             case 'E':
-                option[E] = 1;
+                p_option[E] = 1;
                 break;
             case 's':
-                option[s] = 1;
+                p_option[s] = 1;
                 break;
             case 'e':
-                option[e] = 1;
+                p_option[e] = 1;
                 break;
 
             default:
@@ -86,7 +88,7 @@ for Packing and Unpacking.\n", argv[1]);
     // To be removed after the implementation of pack.c and unpack.c
     for (char i = 0; i < 10; i++)
     {
-        printf("%d ", option[i]);
+        printf("%d ", p_option[i]);
     } printf("\n");
 
     return 0;
