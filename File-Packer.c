@@ -56,30 +56,65 @@ int main(int argc, char *argv[]) {
                 }
             }
         }
-    }
 
-    // Print this if arguments weren't provided.
-    else
-    {
-        printf("You didn't provide any arguments.\n");
-        printf("Finding \"packer.fp\" file\n");
-
-        if ( access( "packer.fp", F_OK ) != -1 ) {
-            printf("\nusing \"packer.fp\"\n");
-        } else {
-            printf("\npacker.fp does not exist or not readable\n");
-            exit(EXIT_FAILURE);
-        }
-
-    }
-
-    // will contain the options provided through arguments
+        // will contain the options provided through arguments
     // options start from 2nd argument
-    enum Options enable[argc-2];
+    enum Options enable_options[argc-2];
     char buffer[10];
 
     // Convert arguments to string buffer
     for (char i = 2; i < argc; i++)
+    {
+        strcpy(buffer, argv[i]);
+        enable_options[i-2] = buffer[1];
+    }
+
+    // Enable the options provided to the program.
+    for (char i = 2; i < options_count; i++)
+    {
+        switch (enable_options[i-2])
+        {
+        case 'P':
+            OPTIONS[P] = 1;
+            break;
+        case 'o':
+            OPTIONS[o] = 1;
+            break;
+        case 'r':
+            OPTIONS[r] = 1;
+            break;
+        case 't':
+            OPTIONS[t] = 1;
+            break;
+        case 'U':
+            OPTIONS[U] = 1;
+            break;
+        case 'g':
+            OPTIONS[g] = 1;
+            break;
+        case 'u':
+            OPTIONS[u] = 1;
+            break;
+        case 'E':
+            OPTIONS[E] = 1;
+            break;
+        case 's':
+            OPTIONS[s] = 1;
+            break;
+        case 'e':
+            OPTIONS[e] = 1;
+            break;
+
+        default:
+            printf("Not an Option %s", argv[i]);
+            break;
+        }
+    }
+    printf("\n");
+
+
+    // Convert arguments to string buffer
+    for (char i = options_count; i < argc; i++)
     {
         strcpy(buffer, argv[i]);
         enable[i-2] = buffer[1];
@@ -122,12 +157,30 @@ int main(int argc, char *argv[]) {
             break;
 
         default:
-            printf("Wrong Option %s", argv[i]);
+            printf("Not an Option %s", argv[i]);
             break;
         }
     }
     printf("\n");
 
+
+    }
+
+    // Print this if arguments weren't provided.
+    else {
+        printf("You didn't provide any arguments.\n");
+        printf("Finding \"packer.fp\" file\n");
+
+        if ( access( "packer.fp", F_OK ) != -1 ) {
+            printf("\nusing \"packer.fp\"\n");
+        } else {
+            printf("\npacker.fp does not exist or not readable\n");
+            exit(EXIT_FAILURE);
+        }
+
+    }
+
+    
     // To be removed after the implementation of pack.c and unpack.c
     for (char i = 0; i < 10; i++)
     {
