@@ -5,7 +5,5 @@ It's a packer for C/C++ source code, it's creates a single package of multiple C
 
 ### List of our contributers
 
-```html
 <div class="github-card" data-github="sukhchainn" data-width="400" data-height="" data-theme="medium"></div>
 <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
-```
