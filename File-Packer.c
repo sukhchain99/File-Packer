@@ -61,96 +61,103 @@ int main(int argc, char *argv[]) {
         // options start from 2nd argument
         enum Options enable_options[10],
                      enable_features[4];
-        char buffer[10];
+        char buffer[12];
 
         // Convert arguments to string buffer
         for (char i = 2; i < options_count+2; ++i)
         {
-            strcpy(buffer, argv[i]);
-            for (int i = 0; buffer[i] != '\0'; ++i)
-            {
-                switch (buffer[i+1])
+            int len = strlen(argv[i]);
+
+            if (len > 11) {
+                printf("%s exceeds the option's allowed length!\n", argv[i]);
+                exit(EXIT_FAILURE);
+            } else {
+                strcpy(buffer, argv[i]);
+                for (int i = 1; i < len; ++i)
                 {
-                case 'P':
-                    OPTIONS[P] = 1;
-                    break;
-                case 'o':
-                    OPTIONS[o] = 1;
-                    break;
-                case 'r':
-                    OPTIONS[r] = 1;
-                    break;
-                case 't':
-                    OPTIONS[t] = 1;
-                    break;
-                case 'U':
-                    OPTIONS[U] = 1;
-                    break;
-                case 'g':
-                    OPTIONS[g] = 1;
-                    break;
-                case 'u':
-                    OPTIONS[u] = 1;
-                    break;
-                case 'E':
-                    OPTIONS[E] = 1;
-                    break;
-                case 's':
-                    OPTIONS[s] = 1;
-                    break;
-                case 'e':
-                    OPTIONS[e] = 1;
-                    break;
+                    switch (buffer[i])
+                    {
+                    case 'P':
+                        OPTIONS[P] = 1;
+                        break;
+                    case 'o':
+                        OPTIONS[o] = 1;
+                        break;
+                    case 'r':
+                        OPTIONS[r] = 1;
+                        break;
+                    case 't':
+                        OPTIONS[t] = 1;
+                        break;
+                    case 'U':
+                        OPTIONS[U] = 1;
+                        break;
+                    case 'g':
+                        OPTIONS[g] = 1;
+                        break;
+                    case 'u':
+                        OPTIONS[u] = 1;
+                        break;
+                    case 'E':
+                        OPTIONS[E] = 1;
+                        break;
+                    case 's':
+                        OPTIONS[s] = 1;
+                        break;
+                    case 'e':
+                        OPTIONS[e] = 1;
+                        break;
 
-                default:
-                    printf("Not an Option %s, ", argv[i]);
-                    break;
-                }
+                    default:
+                        printf("Not an Option %s, ", argv[i]);
+                        break;
+                    }
+                } printf("\n");
             }
         }
 
-        // Enable the options provided to the program.
-        for (char i = 2; i < options_count+2; i++)
-        {
-            switch (enable_options[i-2])
-            {
-            case 'P':
-                OPTIONS[P] = 1;
-                break;
-            case 'o':
-                OPTIONS[o] = 1;
-                break;
-            case 'r':
-                OPTIONS[r] = 1;
-                break;
-            case 't':
-                OPTIONS[t] = 1;
-                break;
-            case 'U':
-                OPTIONS[U] = 1;
-                break;
-            case 'g':
-                OPTIONS[g] = 1;
-                break;
-            case 'u':
-                OPTIONS[u] = 1;
-                break;
-            case 'E':
-                OPTIONS[E] = 1;
-                break;
-            case 's':
-                OPTIONS[s] = 1;
-                break;
-            case 'e':
-                OPTIONS[e] = 1;
-                break;
+        // // Enable the options provided to the program.
+        // for (char i = 2; i < options_count+2; i++)
+        // {
+        //     switch (enable_options[i-2])
+        //     {
+        //     case 'P':
+        //         OPTIONS[P] = 1;
+        //         break;
+        //     case 'o':
+        //         OPTIONS[o] = 1;
+        //         break;
+        //     case 'r':
+        //         OPTIONS[r] = 1;
+        //         break;
+        //     case 't':
+        //         OPTIONS[t] = 1;
+        //         break;
+        //     case 'U':
+        //         OPTIONS[U] = 1;
+        //         break;
+        //     case 'g':
+        //         OPTIONS[g] = 1;
+        //         break;
+        //     case 'u':
+        //         OPTIONS[u] = 1;
+        //         break;
+        //     case 'E':
+        //         OPTIONS[E] = 1;
+        //         break;
+        //     case 's':
+        //         OPTIONS[s] = 1;
+        //         break;
+        //     case 'e':
+        //         OPTIONS[e] = 1;
+        //         break;
 
-            default:
-                printf("Not an Option %s, ", argv[i]);
-                break;
-            }
-        }
-        printf("\n");
+        //     default:
+        //         printf("Not an Option %s, ", argv[i]);
+        //         break;
+        //     }
+        // }
+        // printf("\n");
 
 
         // Convert arguments to string buffer
