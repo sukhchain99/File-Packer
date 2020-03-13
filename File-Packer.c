@@ -59,8 +59,6 @@ int main(int argc, char *argv[]) {
 
         // will contain the options provided through arguments
         // options start from 2nd argument
-        enum Options enable_options[10],
-                     enable_features[4];
         char buffer[12];
 
         // Convert arguments to string buffer
@@ -72,6 +70,7 @@ int main(int argc, char *argv[]) {
                 printf("%s exceeds the option's allowed length!\n", argv[i]);
                 exit(EXIT_FAILURE);
             } else {
+                // Enable OPTIONS
                 strcpy(buffer, argv[i]);
                 for (int i = 1; i < len; ++i)
                 {
@@ -116,79 +115,20 @@ int main(int argc, char *argv[]) {
             }
         }
 
-        // // Enable the options provided to the program.
-        // for (char i = 2; i < options_count+2; i++)
-        // {
-        //     switch (enable_options[i-2])
-        //     {
-        //     case 'P':
-        //         OPTIONS[P] = 1;
-        //         break;
-        //     case 'o':
-        //         OPTIONS[o] = 1;
-        //         break;
-        //     case 'r':
-        //         OPTIONS[r] = 1;
-        //         break;
-        //     case 't':
-        //         OPTIONS[t] = 1;
-        //         break;
-        //     case 'U':
-        //         OPTIONS[U] = 1;
-        //         break;
-        //     case 'g':
-        //         OPTIONS[g] = 1;
-        //         break;
-        //     case 'u':
-        //         OPTIONS[u] = 1;
-        //         break;
-        //     case 'E':
-        //         OPTIONS[E] = 1;
-        //         break;
-        //     case 's':
-        //         OPTIONS[s] = 1;
-        //         break;
-        //     case 'e':
-        //         OPTIONS[e] = 1;
-        //         break;
-
-        //     default:
-        //         printf("Not an Option %s, ", argv[i]);
-        //         break;
-        //     }
-        // }
-        // printf("\n");
-
-
-        // Convert arguments to string buffer
-        for (char i = options_count+2; i < argc; i++)
-        {
-            strcpy(buffer, argv[i]);
-            enable_features[i-2] = buffer[2];
-        }
 
         // Enable the features provided to the program.
         for (char i = options_count+2; i < argc; i++)
         {
-            switch (enable_features[i-2])
-            {
-            case 'P':
-                FEATURES[P] = 1;
-                break;
-            case 'o':
-                FEATURES[o] = 1;
-                break;
-            case 'r':
-                FEATURES[r] = 1;
-                break;
-            case 't':
-                FEATURES[t] = 1;
-                break;
-            
-            default:
-                printf("Not an Option %s, ", argv[i]);
-                break;
-            }
+            if (!strcmp(argv[i], "--test")) {
+                FEATURES[test] = 1;
+            } else if (!strcmp(argv[i], "--verbose")) {
+                FEATURES[verbose] = 1;
+            } else if (!strcmp(argv[i], "--help")) {
+                FEATURES[help] = 1;
+            } else if (!strcmp(argv[i], "--quite")) {
+                FEATURES[quite] = 1;
+            } else
+                printf("%s not a feature! \n", argv[i]);
         }
         printf("\n");
 
