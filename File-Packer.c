@@ -109,7 +109,7 @@ int main(int argc, char *argv[]) {
                         break;
 
                     default:
-                        printf("Not an Option %s, ", argv[i]);
+                        printf("Not an Option %s, ", buffer[i]);
                         break;
                     }
                 } printf("\n");
