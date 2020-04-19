@@ -1,24 +1,40 @@
 #include <stdio.h>
+#include <conio.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
+
 #include "pack.h"
 #include "unpack.h"
+#include "lexer.h"
 
-#define VERSION "0.0.0.1"
+#define VERSION "0.0.0.2"
+
+enum Options {P, o, r, t, U, g, u, E, s, e};
+enum Features {test, verbose, help, quite};
 
 // Options available globally
 char OPTIONS[10], FEATURES[4];
+FILE *file;
+bool is_file_open = false;
 
 int main(int argc, char *argv[]) {
     printf("file-pack version : %s\n", VERSION);
 
-    // Checks if arguments are provided or not.
+    // Do this if arguments were provided.
     if (argc > 1) {
         // Checks if file exists or not.
         if ( access( argv[1], F_OK ) != -1 ) {
             printf("\nusing %s\n", argv[1]);
-        } else { 
+            file = fopen(argv[1], "r");
+            if (file == NULL) {
+                printf("Error opening the file : %s\n", argv[1]);
+                exit(EXIT_FAILURE);
+            } else {
+                is_file_open = true;
+            }
+        } else {
             printf("\n%s does not exist or not readable\n", argv[1]);
             exit(EXIT_FAILURE);
         }
@@ -56,6 +72,7 @@ int main(int argc, char *argv[]) {
                 }
             }
         }
+
 
         // will contain the options provided through arguments
         // options start from 2nd argument
@@ -109,7 +126,6 @@ int main(int argc, char *argv[]) {
 
                     default:
                         printf("Not an Option %c, ", buffer[i]);
-                        break;
                     }
                 } printf("\n");
             }
@@ -131,17 +147,22 @@ int main(int argc, char *argv[]) {
                 printf("%s not a feature! \n", argv[i]);
         }
         printf("\n");
-
-
     }
 
-    // Print this if arguments weren't provided.
+    // Do this if arguments weren't provided.
     else {
         printf("You didn't provide any arguments.\n");
         printf("Finding \"packer.fp\" file\n");
 
         if ( access( "packer.fp", F_OK ) != -1 ) {
             printf("\nusing \"packer.fp\"\n");
+            file = fopen("packer.fp", "r");
+            if (file == NULL) {
+                printf("Error opening the file : %s\n", argv[1]);
+                exit(EXIT_FAILURE);
+            } else {
+                is_file_open = true;
+            }
         } else {
             printf("\npacker.fp does not exist or not readable\n");
             exit(EXIT_FAILURE);
@@ -149,7 +170,20 @@ int main(int argc, char *argv[]) {
 
     }
 
-    
+
+    /**
+     * From here the application logic starts
+     *
+    */
+    char str[100], str2[100];
+    fscanf(file, "%s %s", str, str2);
+    printf("%s %s", str, str2);
+    tokenizer(file);
+
+
+    // closing the file
+    fclose(file);
+
     // To be removed after the implementation of pack.c and unpack.c
     for (char i = 0; i < 10; i++)
     {
@@ -160,5 +194,6 @@ int main(int argc, char *argv[]) {
         printf("%d ", FEATURES[i]);
     } printf("\n");
 
+    getch();
     return 0;
 }
