@@ -1,10 +1,12 @@
 token: /include
+token: 	conio.h
 token: 
-token: conio.h
-token: Sunio
-token: banio
-token: LaLaLand
-token: Ha
-token: HA
-token: Ha
-token: HA
+token: for
+token: (int
+token: i=0;
+token: i<10;
+token: i++)
+token: {
+token:  printf("%d",
+token: i);
+token: }

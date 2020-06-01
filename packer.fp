@@ -1,5 +1,7 @@
 /include
 	conio.h
-Sunio
-banio
-LaLaLand Ha HA Ha HA
+
+for (int i=0; i<10; i++)
+{
+	printf("%d", i);
+}

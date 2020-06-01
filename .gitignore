@@ -12,3 +12,4 @@ packer
 *.exe
 .vscode/
 *.o
+*.txt
