@@ -175,9 +175,6 @@ int main(int argc, char *argv[]) {
      * From here the application logic starts
      *
     */
-    char str[100], str2[100];
-    fscanf(file, "%s %s", str, str2);
-    printf("%s %s", str, str2);
     tokenizer(file);
 
 
@@ -185,6 +182,7 @@ int main(int argc, char *argv[]) {
     fclose(file);
 
     // To be removed after the implementation of pack.c and unpack.c
+    printf("\n");
     for (char i = 0; i < 10; i++)
     {
         printf("%d ", OPTIONS[i]);
