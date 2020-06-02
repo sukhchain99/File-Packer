@@ -145,8 +145,7 @@ int main(int argc, char *argv[]) {
                 FEATURES[quite] = 1;
             } else
                 printf("%s not a feature! \n", argv[i]);
-        }
-        printf("\n");
+        } printf("\n");
     }
 
     // Do this if arguments weren't provided.
