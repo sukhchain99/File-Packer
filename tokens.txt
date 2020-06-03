@@ -1,14 +1,14 @@
-token: /include 2:0
-token:  2:1
-token: conio.h 3:0
-token:  4:0
-token: for 4:4
-token: (int 4:9
-token: i=0; 4:14
-token: i<10; 4:20
-token: i++) 5:0
-token: { 6:0
-token:  6:1
-token: printf("%d", 6:14
-token: i); 7:0
-token: } 7:2
+keyword: /include 1:0
+keyword:  1:1
+keyword: conio.h 2:0
+keyword:  3:0
+keyword: for 3:4
+keyword: (int 3:9
+keyword: i=0; 3:14
+keyword: i<10; 3:20
+keyword: i++) 4:0
+keyword: { 5:0
+keyword:  5:1
+keyword: printf("%d", 5:14
+keyword: i); 6:0
+keyword: } 6:2

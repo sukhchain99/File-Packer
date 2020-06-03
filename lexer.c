@@ -3,12 +3,21 @@
 #include <string.h>
 #include "lexer.h"
 
+char* token[] = {
+    "keyword",
+    "operator",
+    "literal",
+    "constant",
+    "identifier",
+    "function",
+};
+
 void tokenizer(FILE *file)
 {
     FILE *fp = fopen("tokens.txt", "w");
     char ch, buff[250];
     bool flag;
-    int buff_count = 0, line_no = 1, char_pos = 0;
+    int buff_count = 0, line_no = 0, char_pos = 1;
 
     // breaking strings into tokens
     while(ch != EOF)
@@ -34,15 +43,15 @@ void tokenizer(FILE *file)
             buff_count++;
         } else {
             buff[buff_count] = '\0';
-            fprintf(fp, "token: %s %d:%d\n", buff, line_no, char_pos);
+            fprintf(fp, "%s: %s %d:%d\n", token[0], buff, line_no, char_pos);
             buff_count = 0;
         }
     }
 
     if (feof(file))
-        printf("\n End of file reached.\n");
+        printf("\n\n End of file reached.\n\n");
     else
-        printf("\n Something went wrong.\n");
+        printf("\n\n Something went wrong.\n\n");
 
     fclose(fp);
     //return tokens;
