@@ -36,7 +36,7 @@ void tokenizer(FILE *file)
         flag = (ch == ' ' || ch == '\t' || ch == '\n' || ch == EOF) ? 0 : 1;
 
         // if it's a character then put it in the token buffer 
-        // else just put it in the token file and clear the buffer
+        // else just put the buffer in the token file and clear the buffer
         if (flag == true)
         {
             buff[buff_count] = ch;
