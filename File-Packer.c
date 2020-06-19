@@ -1,13 +1,14 @@
 #include <stdio.h>
-#include <conio.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
 
-#include "pack.h"
-#include "unpack.h"
-#include "lexer.h"
+#include "dependencies/tiny-regex-c/re.h"
+
+#include "include/pack.h"
+#include "include/unpack.h"
+#include "include/lexer.h"
 
 #define VERSION "0.0.0.2"
 
@@ -191,6 +192,5 @@ int main(int argc, char *argv[]) {
         printf("%d ", FEATURES[i]);
     } printf("\n");
 
-    getch();
     return 0;
 }

@@ -1,14 +1,14 @@
-keyword: /include 1:0
-keyword:  1:1
-keyword: conio.h 2:0
-keyword:  3:0
-keyword: for 3:4
-keyword: (int 3:9
-keyword: i=0; 3:14
-keyword: i<10; 3:20
-keyword: i++) 4:0
-keyword: { 5:0
-keyword:  5:1
-keyword: printf("%d", 5:14
-keyword: i); 6:0
-keyword: } 6:2
+literal: /include 1:0
+literal:  1:1
+literal: conio.h 2:0
+literal:  3:0
+literal: for 3:4
+literal: (int 3:9
+literal: i=0; 3:14
+literal: i<10; 3:20
+literal: i++) 4:0
+literal: { 5:0
+literal:  5:1
+literal: printf("%d", 5:14
+literal: i); 6:0
+literal: } 6:2
