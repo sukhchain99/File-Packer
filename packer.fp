@@ -1,7 +1,6 @@
-/include
-	conio.h
+// enter the file names here
+src("filename1",
+	"filename2",
+	"filename3");
 
-for (int i=0; i<10; i++)
-{
-	printf("%d", i);
-}
+destination("/dist");
