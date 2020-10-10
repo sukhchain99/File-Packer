@@ -4,11 +4,9 @@
 #include <string.h>
 #include <stdbool.h>
 
-#include "dependencies/tiny-regex-c/re.h"
-
 #include "include/pack.h"
 #include "include/unpack.h"
-#include "include/lexer.h"
+#include "include/loader.h"
 
 #define VERSION "0.0.0.2"
 
