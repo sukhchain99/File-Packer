@@ -2,26 +2,7 @@
 #include <stdbool.h>
 #include <string.h>
 
-#include "lexer.h"
-
-
-char* token[] = {
-    "keyword",
-    "operator",
-    "literal",
-    "constant",
-    "identifier",
-    "function",
-};
-
-const char* pattern = "int|for";
-
-// "auto|break|case|char|const|"\
-// 				"continue|default|do|double|else|"\
-// 				"enum|extern|float\\|for\\|goto|"\
-// 				"if|int|long|register|return|short|signed|"\
-// 				"sizeof|static|struct|switch|typedef|union|unsigned|"\
-// 				"void|volatile|while";
+#include "loader.h"
 
 void tokenizer(FILE *file)
 {
@@ -37,10 +18,12 @@ void tokenizer(FILE *file)
         
         while (token != NULL)
         {
+            
             fprintf(fp, "%s\n", token);
+
             token = strtok(NULL, " \n\t");
         }
-         
+
     }
 
     if (!feof(file))
